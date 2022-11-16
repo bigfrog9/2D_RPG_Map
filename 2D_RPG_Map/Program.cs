@@ -37,12 +37,13 @@ namespace _2D_RPG_Map
         static void Main(string[] args)
         {
             DisplayMap();
+            DisplayMap(2);
             Console.ReadKey(true);
+
         }
 
         static void DisplayMap()
         {
-            Console.WriteLine("");
             Console.Write("+");
             
             for (x = 0; x <= 29; x++)
@@ -50,7 +51,7 @@ namespace _2D_RPG_Map
                 Console.Write("-");
             }
             Console.Write("+");
-
+            Console.WriteLine("");
             for (y = 0; y <= 11; y++)
             {
                 Console.Write("|");
@@ -72,7 +73,44 @@ namespace _2D_RPG_Map
 
         static void DisplayMap(int scale)
         {
-          
+            Console.WriteLine("");
+            Console.Write("+");
+
+            for (x = 0; x <= 29*scale; x++)
+            {
+                Console.Write("-");
+            }
+
+            Console.Write("+");
+            Console.WriteLine("");
+
+            for (y = 0; y <= 11; y++)
+            {
+                for(int ys=0; ys < scale; ys++)
+                {
+
+                    Console.Write("|");
+
+                    for (x = 0; x <= 29; x++)
+                    {
+                        for (int xs=0; xs < scale; xs++)
+                        {
+
+                            Console.Write(map[y, x]);
+                        }
+                    }
+                    Console.Write("|");
+                    Console.WriteLine("");
+                }
+            }
+
+            Console.Write("+");
+            
+            for (x = 0; x <= 29*scale; x++)
+            {
+                Console.Write("-");
+            }
+            Console.Write("+");
         }
 
     }
