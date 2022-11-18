@@ -37,10 +37,35 @@ namespace _2D_RPG_Map
         static void Main(string[] args)
         {
             DisplayMap();
-            DisplayMap(2);
+            DisplayMap(3); //zooming in by a factor of 3
+            Console.WriteLine();
+            Console.WriteLine("Press any key to quit");
             Console.ReadKey(true);
-
+            
         }
+
+        static void Colourpicker()
+        {
+            switch (map[y,x])
+            {
+                default: Console.ResetColor();
+                    break;
+
+                case '*': Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    break;
+
+                case '~': Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+
+                case '`': Console.ForegroundColor=ConsoleColor.DarkYellow;
+                    break;
+                
+                case '^': Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+                
+            }
+        }
+        
 
         static void DisplayMap()
         {
@@ -58,7 +83,9 @@ namespace _2D_RPG_Map
 
                 for (x = 0; x <= 29; x++)
                 {
+                    Colourpicker();
                     Console.Write(map[y, x]);
+                    Console.ResetColor();
                 }
                 Console.Write("|");
                 Console.WriteLine("");
@@ -75,6 +102,7 @@ namespace _2D_RPG_Map
         {
             Console.WriteLine("");
             Console.Write("+");
+
 
             for (x = 0; x <= 29*scale; x++)
             {
@@ -95,8 +123,9 @@ namespace _2D_RPG_Map
                     {
                         for (int xs=0; xs < scale; xs++)
                         {
-
+                            Colourpicker();
                             Console.Write(map[y, x]);
+                            Console.ResetColor();
                         }
                     }
                     Console.Write("|");
